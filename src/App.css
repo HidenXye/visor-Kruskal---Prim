@@ -1,0 +1,282 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --azul: #2563eb;
+    --verde: #16a34a;
+    --rojo: #dc2626;
+    --gris-claro: #f0f2f5;
+    --borde: #e0e0e0;
+}
+
+html, body, #root {
+    height: 100%;
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    background: var(--gris-claro);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #1a1a2e;
+}
+
+.encabezado {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 14px 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.encabezado h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.encabezado p {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 3px;
+}
+
+.pestanas {
+    display: flex;
+    background: #fff;
+    border-bottom: 2px solid var(--borde);
+    flex-shrink: 0;
+}
+
+.pestana {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    color: #666;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    user-select: none;
+}
+
+.pestana:hover {
+    color: #1a1a2e;
+    background: #f8f9fa;
+}
+
+.pestana.activa {
+    color: #1a1a2e;
+    border-bottom-color: var(--azul);
+    background: #eff6ff;
+}
+
+.subpestanas {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--borde);
+    flex-shrink: 0;
+}
+
+.subpestana {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    color: #888;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.subpestana:hover {
+    color: #333;
+}
+
+.subpestana.activa {
+    color: var(--azul);
+    background: #fff;
+    border-radius: 6px 6px 0 0;
+}
+
+.principal {
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.panel-grafo {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    min-width: 0;
+    min-height: 400px;
+}
+
+#red {
+    position: absolute;
+    inset: 0;
+}
+
+.panel-info {
+    width: 310px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.panel-info h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+    flex-shrink: 0;
+}
+
+.fila-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.fila-info .etiqueta {
+    color: #888;
+}
+
+.fila-info .valor {
+    font-weight: 600;
+}
+
+.valor.aceptado {
+    color: var(--verde);
+}
+
+.valor.rechazado {
+    color: var(--rojo);
+}
+
+.valor.pendiente {
+    color: #888;
+}
+
+.historial {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 12px;
+}
+
+.historial h4 {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    padding: 4px 0;
+    z-index: 2;
+}
+
+.item-arista {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-family: Consolas, monospace;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.item-arista.actual {
+    background: #eff6ff;
+    border-left: 3px solid var(--azul);
+    font-weight: 600;
+}
+
+.item-arista.hecho-aceptado {
+    color: var(--verde);
+}
+
+.item-arista.hecho-rechazado {
+    color: var(--rojo);
+    text-decoration: line-through;
+}
+
+.item-arista.futuro {
+    color: #ccc;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    background: #fff;
+    border-top: 1px solid var(--borde);
+    flex-shrink: 0;
+}
+
+.controles button {
+    padding: 7px 14px;
+    border: 1px solid #d0d5dd;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.15s;
+}
+
+.controles button:hover {
+    background: var(--gris-claro);
+    border-color: var(--azul);
+}
+
+.controles button:active {
+    background: #e0e5eb;
+}
+
+.controles button.boton-activo {
+    background: var(--azul);
+    color: #fff;
+    border-color: var(--azul);
+}
+
+.contador-paso {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin: 0 6px;
+    user-select: none;
+}
+
+.etiqueta-vel {
+    font-size: 11px;
+    color: #888;
+    margin-right: 3px;
+    user-select: none;
+}
+
+.deslizador {
+    width: 75px;
+    accent-color: var(--azul);
+}
