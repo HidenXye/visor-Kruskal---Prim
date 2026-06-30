@@ -12,11 +12,11 @@ export function Historial({ pasos, pasoActual, algoritmoActual }) {
                     clase += ' futuro';
                 }
 
-                const decision = algoritmoActual === 'prim' ? '' : (p.aceptado ? ' \u2713' : ' \u2717');
+                const decision = algoritmoActual === 'prim' ? '' : (p.aceptado ? ' +' : ' -');
 
                 return (
                     <div key={i} className={clase}>
-                        {i + 1}. {p.origen}\u2014{p.destino}  {p.peso.toFixed(4)}{decision}
+                        {i + 1}. {p.origen}—{p.destino}  {p.peso.toFixed(4)}{decision}
                     </div>
                 );
             })}

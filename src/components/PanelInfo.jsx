@@ -22,7 +22,7 @@ export function PanelInfo({ pasos, pasoActual, algoritmoActual }) {
             : 'valor rechazado';
 
     const textoDecision = !actual
-        ? '\u2014'
+        ? '—'
         : (algoritmoActual === 'prim' || actual.aceptado)
             ? 'Aceptado'
             : 'Rechazado';
@@ -36,11 +36,11 @@ export function PanelInfo({ pasos, pasoActual, algoritmoActual }) {
             </div>
             <div className="fila-info">
                 <span className="etiqueta">Arista evaluada</span>
-                <span className="valor">{actual ? `${actual.origen} \u2014 ${actual.destino}` : '\u2014'}</span>
+                <span className="valor">{actual ? `${actual.origen} — ${actual.destino}` : '—'}</span>
             </div>
             <div className="fila-info">
                 <span className="etiqueta">Peso IM</span>
-                <span className="valor">{actual ? actual.peso.toFixed(4) : '\u2014'}</span>
+                <span className="valor">{actual ? actual.peso.toFixed(4) : '—'}</span>
             </div>
             <div className="fila-info">
                 <span className="etiqueta">Decisión</span>
@@ -48,7 +48,7 @@ export function PanelInfo({ pasos, pasoActual, algoritmoActual }) {
             </div>
             <div className="fila-info">
                 <span className="etiqueta">Motivo</span>
-                <span className="valor">{actual && actual.motivo ? actual.motivo : '\u2014'}</span>
+                <span className="valor">{actual && actual.motivo ? actual.motivo : '—'}</span>
             </div>
             <div className="fila-info">
                 <span className="etiqueta">Aristas aceptadas</span>
